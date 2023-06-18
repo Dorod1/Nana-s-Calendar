@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('path/to/your/image.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .day {
+      width: 400px;
+      height: 400px;
+      border: 4px solid #333;
+      border-radius: 20px;
+      background-color: #f6d5e1;
+      padding: 40px;
+      box-sizing: border-box;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .day p {
+      margin: 0;
+      font-size: 24px;
+      color: #fff;
+      line-height: 1.4;
+    }
+
+    .current-day {
+      background-color: #ffc107;
+    }
+
+    .date {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+  </style>
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('https://wallpapers.com/images/featured/mgvhbyfw7m9mk209.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .day {
+      width: 400px;
+      height: 400px;
+      border: 4px solid #333;
+      border-radius: 20px;
+      background-color: #f6d5e1;
+      padding: 40px;
+      box-sizing: border-box;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .day p {
+      margin: 0;
+      font-size: 24px;
+      color: #fff;
+      line-height: 1.4;
+    }
+
+    .current-day {
+      background-color: #ff9dac;
+    }
+
+    .date {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .message-container {
+      flex-grow: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="day current-day">
+    <div class="message-container">
+      <p class="date" id="current-date"></p>
+      <p id="message"></p>
+    </div>
+  </div>
+
+  <script>
+    var messages = {
+      "6": {
+        "15": {
+          "jp": "日本語のメッセージ",
+          "en": "ongratulations, you made it! This might be the last message, but there is still so much more that I love about you that I couldn't fit. Let's enter the new year filled with hope and love!"
+        },
+        "16": {
+          "jp": "別の日本語のメッセージ",
+          "en": "Another message in English"
+        },
+	"17": {
+          "jp": "言葉では言い表せないほど、凪菜のことを愛している",
+          "en": "There is so much more that I love about you than I can put into words"
+        },
+        "18": {
+          "jp": "今日は、俺の人生が永遠に変わった日",
+          "en": "Today marks the day that my life changed forever"
+        },
+	"19": {
+          "jp": "凪菜の笑顔が好き",
+          "en": "I love your smile"
+        },
+        "20": {
+          "jp": "凪菜は俺を完成させたと思わせる",
+          "en": "You make me feel complete"
+        },
+	"21": {
+          "jp": "俺のダジャレは面白くないと言われたときが好き",
+          "en": "I love the times when you tell me my puns aren't funny"
+        },
+        "22": {
+          "jp": "挑戦することをあきらめない姿勢が好き",
+          "en": "I love that you never give up trying"
+        },
+	"23": {
+          "jp": "凪菜は人生のすべての苦難を乗り越える価値があるものにしてくれる",
+          "en": "You make all of life's struggles worth it"
+        },
+        "24": {
+          "jp": "美味しいものを食べた時の顔が好き",
+          "en": "I love the face you make when you eat something delicious"
+        },
+	"25": {
+          "jp": "源氏物語にかける情熱が好き",
+          "en": "I love your passion for The Tale of Genji"
+        },
+        "26": {
+          "jp": "凪菜の美しい手が好き！",
+          "en": "I love that you have beautiful hands!"
+        },
+	"27": {
+          "jp": "凪菜の愛は温かい抱擁のように感じられる",
+          "en": "Your love feels like a warm embrace"
+        },
+        "28": {
+          "jp": "お互いに自分らしくいられるところが好き",
+          "en": "I love that we can be ourselves around each other"
+        },
+	"29": {
+          "jp": "いつも俺の背中を押してくれる凪菜が好き",
+          "en": "I love that you always push me to be a better person"
+        },
+        "30": {
+          "jp": "俺たちが食の趣味が合うところが好き",
+          "en": "I love that we have good taste in food"
+        },
+	
+        // ... Add messages for other days in June
+      },
+      "7": {
+	"1": {
+          "jp": "毎日を面白くしてくれるところが好き",
+          "en": "I love that you make every day interesting"
+        },
+        "2": {
+          "jp": "いつも人に優しくしてくれるところが好き",
+          "en": "I love that you are always so kind to others"
+        },
+	"3": {
+          "jp": "俺はいつも凪菜の決意に感心している。",
+          "en": "I always admire how determined you are"
+        },
+        "4": {
+          "jp": "アメリカ誕生日おめでとう！アメリカを出て、凪菜に出会って本当によかった",
+          "en": "Happy birthday America! I am so glad I left it and met you"
+        },
+	"5": {
+          "jp": "足が臭いと言われるのが好き！",
+          "en": "I love the way you tell me my feet stink!"
+        },
+        "6": {
+          "jp": "一緒に笑えることが好き",
+          "en": "I love that we can laugh together"
+        },
+	"7": {
+          "jp": "英語が嫌いなのに勉強しているところが好き",
+          "en": "I love that you're learning English despite hating it"
+        },
+        "8": {
+          "jp": "俺たちがミントチョコアイスが好きなのもいい。",
+          "en": "I love that we both enjoy mint chocolate ice cream"
+        },
+	"9": {
+          "jp": "色々な国を旅してみたいところが好き",
+          "en": "I love that you want to travel the world"
+        },
+        "10": {
+          "jp": "今でも、俺の心を躍らせるあなたが好き。",
+          "en": "I love the way that you still make my heart race"
+        },
+	"11": {
+          "jp": "凪菜と一緒に年をとりたい",
+          "en": "You are the person I want to grow old with"
+        },
+        "12": {
+          "jp": "何気ない瞬間を思い出に残せるのが好き",
+          "en": "I love that you can make ordinary moments memorable"
+        },
+	"13": {
+          "jp": "凪菜の笑い声が好き",
+          "en": "I love your laugh"
+        },
+        "14": {
+          "jp": "お久しぶり！愛してるよ　笑",
+          "en": "Long time no see! I love you hehe"
+        },
+        "15": {
+          "jp": "新しい体験をたくさん見せてくれるのが嬉しい",
+          "en": "I love that you've showed me so many new experiences"
+        },
+        "16": {
+          "jp": "凪菜の美しい目が好き",
+          "en": "I love your beautiful eyes"
+        },
+	"17": {
+          "jp": "いつもおはよおと送ってくれるのが好き！",
+          "en": "I love how you always tell me good morning!"
+        },
+        "18": {
+          "jp": "ワンピースを観ているなんて最高",
+          "en": "I love that you watch One Piece"
+        },
+	"19": {
+          "jp": "どんな時も美しくいるあなたが大好き",
+          "en": "I love how you always look beautiful no matter what"
+        },
+        "20": {
+          "jp": "一緒に温泉に行くのが楽しいね",
+          "en": "I love when we go to the hot springs together"
+        },
+	"21": {
+          "jp": "マカロニサラダも嫌いなところが好き",
+          "en": "I love that you also hate macaroni salad"
+        },
+        "22": {
+          "jp": "凪菜はいい母だから好き",
+          "en": "I love how good a mother you are"
+        },
+	"23": {
+          "jp": "俺の料理をいつも試してくれるのが嬉しい",
+          "en": "I love that you're always willing to try my cooking"
+        },
+        "24": {
+          "jp": "凪菜を恋人と呼べるなんて幸運だね",
+          "en": "I'm lucky to call you mine"
+        },
+	"25": {
+          "jp": "スーパードライを楽しむ姿も好き",
+          "en": "I love how much you enjoy Super Dry"
+        },
+        "26": {
+          "jp": "凪菜がいなければ、こんなに頑張れない",
+          "en": "I couldn't keep working so hard without you"
+        },
+	"27": {
+          "jp": "凪菜は俺にとってとても特別",
+          "en": "You are so special to me"
+        },
+        "28": {
+          "jp": "いつも凪菜の自信に刺激を受けている",
+          "en": "I am always inspired by your confidence"
+        },
+	"29": {
+          "jp": "頭がいいのが好き",
+          "en": "I love how smart you are"
+        },
+        "30": {
+          "jp": "凪菜ほど幸せな気分にさせてくれる人はいない",
+          "en": "No one makes me feel as happy as you do"
+        },
+	"31": {
+          "jp": "凪菜のユーモアのセンスが好き",
+          "en": "I love your sense of humor"
+        },
+        // ... Add messages for other days in July
+      },
+      "8": {
+	"1": {
+          "jp": "凪菜の意見は俺にとって大きな価値がある",
+          "en": "Your opinions mean the world to me"
+        },
+        "2": {
+          "jp": "鶏肉と梅とシソの揚げ春巻きは死ぬほど美味しい",
+          "en": "Your fried spring rolls with chicken, ume, and shiso are to die for"
+        },
+	"3": {
+          "jp": "俺を愛してくれてありがとう",
+          "en": "Thank you for loving me"
+        },
+        "4": {
+          "jp": "凪菜を信じている！",
+          "en": "I believe in you!"
+        },
+	"5": {
+          "jp": "日本について教えてくれたことがとても嬉しい",
+          "en": "I love how much you've taught me about Japan"
+        },
+        "6": {
+          "jp": "ゲームをさせてくれるのが嬉しい",
+          "en": "I love that you let me play games"
+        },
+	"7": {
+          "jp": "忙しい時でも、いつも時間を作ってくれてありがとう",
+          "en": "Thank you for always making time to talk to me, even when you're busy"
+        },
+        "8": {
+          "jp": "千紘は、凪菜を母に持つことができて幸運だね",
+          "en": "Chihiro is lucky to have a mother like you"
+        },
+	"9": {
+          "jp": "褒められると愛されていると実感する",
+          "en": "I feel so loved when you compliment me"
+        },
+        "10": {
+          "jp": "凪菜は内面も外見も美しい",
+          "en": "You're beautiful inside and out"
+        },
+	"11": {
+          "jp": "凪菜と過ごす夜は、どんなパーティーよりも楽しい",
+          "en": "A night spent with you is better than any party"
+        },
+        "12": {
+          "jp": "毎日、凪菜に深く恋をしている",
+          "en": "Every day I fall deeper in love with you"
+        },
+	"13": {
+          "jp": "耳がかわいい!",
+          "en": "Your ears are cute!"
+        },
+        "14": {
+          "jp": "凪菜の正直さが好き",
+          "en": "I love your honesty"
+        },
+        "15": {
+          "jp": "俺の料理はすべて味が濃いと思うことが好き",
+          "en": "I love that you think all of my food has flavor"
+        },
+        "16": {
+          "jp": "凪菜のそばで目覚める感覚が好き",
+          "en": "I love the feeling of waking up beside you"
+        },
+	"17": {
+          "jp": "おやすみを忘れないところが好き",
+          "en": "I love that you never forget to say good night"
+        },
+        "18": {
+          "jp": "最愛の人にハッピーバースデー！",
+          "en": "Happy Birthday to the love of my life!"
+        },
+	"19": {
+          "jp": "いつも俺を撮ってくれるのが嬉しい",
+          "en": "I love that you always take pictures of me"
+        },
+        "20": {
+          "jp": "常に未来のことを考えているところが好き",
+          "en": "I love that you always think about the future"
+        },
+	"21": {
+          "jp": "どんなスタイルでも、凪菜の髪が好き",
+          "en": "I love your hair, no matter how you style it"
+        },
+        "22": {
+          "jp": "疲れていても千紘の世話をする姿に感心する",
+          "en": "I admire how you take care of Chihiro even when you're tired"
+        },
+	"23": {
+          "jp": "一緒に外を歩くのが好き",
+          "en": "I love it when we walk outside together"
+        },
+        "24": {
+          "jp": "漫才を観ている姿が好き",
+          "en": "I love seeing you watch manzai"
+        },
+	"25": {
+          "jp": "凪菜の香りが好き",
+          "en": "I love your fragrance"
+        },
+        "26": {
+          "jp": "いつも俺を高めるためにチャレンジしてくれるところが好き",
+          "en": "I love how you always challenge me to be a better person"
+        },
+	"27": {
+          "jp": "千紘の成長を一緒に見守るのが好き",
+          "en": "I love watching Chihiro grow up with you"
+        },
+        "28": {
+          "jp": "凪菜の服装が好き",
+          "en": "I love the way you dress"
+        },
+	"29": {
+          "jp": "友達にはちょっと照れ屋さんなところも好き",
+          "en": "I love how you're a little shy around friends"
+        },
+        "30": {
+          "jp": "毎日をおもしろくするのが好き",
+          "en": "I like that you make every day interesting"
+        },
+	"31": {
+          "jp": "俺たちのつながりの深さが好き",
+          "en": "I love how deep our connection is"
+        },
+        // ... Add messages for other days in July
+      },
+      "9": {
+	"1": {
+          "jp": "ビーファーストのファンガールとして活躍する姿を見るのが好き",
+          "en": "I love watching you be a fan girl of Be First"
+        },
+        "2": {
+          "jp": "頼りになることが好き",
+          "en": "I love that I can trust you"
+        },
+	"3": {
+          "jp": "毎日、最初に考えるのは凪菜だよ",
+          "en": "You're the first thing on my mind every day"
+        },
+        "4": {
+          "jp": "俺のことを本当に心配してくれていることが好き",
+          "en": "I love that you truly care about me"
+        },
+	"5": {
+          "jp": "しょっぱいものを好んで食べるところが好き",
+          "en": "I love that you enjoy eating salty food"
+        },
+        "6": {
+          "jp": "俺の人生を素晴らしい冒険にしてくれて、ありがとう",
+          "en": "Thank you for making my life a wonderful adventure"
+        },
+	"7": {
+          "jp": "とてもかわいい猫ちゃんを飼っているんだね",
+          "en": "You have a very cute cat"
+        },
+        "8": {
+          "jp": "ディズニーに行きたいことが好き",
+          "en": "I love that you want to go to Disney"
+        },
+	"9": {
+          "jp": "凪菜の声が好き",
+          "en": "I love the sound of your voice"
+        },
+        "10": {
+          "jp": "毎晩の電話も大好き",
+          "en": "I love our nightly phone calls"
+        },
+	"11": {
+          "jp": "一緒にテレビを見ているだけでも楽しい",
+          "en": "Even just watching TV with you is fun"
+        },
+        "12": {
+          "jp": "我慢強いところが好き",
+          "en": "I love that you are patient with me"
+        },
+	"13": {
+          "jp": "モーツァルトが好きだと言ってくれたことが嬉しい",
+          "en": "I love that you told me you like Mozart"
+        },
+        "14": {
+          "jp": "千紘に俺のお菓子を食べさせてくれるなんて最高",
+          "en": "I love that you let Chihiro try some of my sweets"
+        },
+        "15": {
+          "jp": "俺たちが山岡屋が好きなのが好き",
+          "en": "I love that we both like Yamaokaya"
+        },
+        "16": {
+          "jp": "俳句について教えてくれたのが好き",
+          "en": "I love that you taught me about haiku"
+        },
+	"17": {
+          "jp": "凪菜の顔を見ていると、幸せになれる",
+          "en": "Seeing your face makes me happy"
+        },
+        "18": {
+          "jp": "ピザ味のチップスを見せてくれたのが嬉しい",
+          "en": "I love that you showed me pizza flavored chips"
+        },
+	"19": {
+          "jp": "俺たちの英語タイムが大好き",
+          "en": "I love our English Time"
+        },
+        "20": {
+          "jp": "凪菜がくれた指輪をずっと大切にする",
+          "en": "I will always cherish the ring you gave me"
+        },
+	"21": {
+          "jp": "一緒に生ハム食べるときが好き",
+          "en": "I love when we eat cured ham together"
+        },
+        "22": {
+          "jp": "凪菜の肩をマッサージさせてくれるのが好き",
+          "en": "I love when you let me massage your shoulders"
+        },
+	"23": {
+          "jp": "凪菜のそばにいると退屈しないのが好き",
+          "en": "I love that I'll never get bored when I'm around you"
+        },
+        "24": {
+          "jp": "お弁当を作ってくれたのが嬉しい（美味しかったよ）",
+          "en": "I love that you made me bento (it was delicious)"
+        },
+	"25": {
+          "jp": "俺たちの愛はワンピースより尊い",
+          "en": "Our love is more precious than the One Piece"
+        },
+        "26": {
+          "jp": "言葉では言い表せないほど、凪菜のことを愛している",
+          "en": "There is so much more that I love about you than I can put into words"
+        },
+	"27": {
+          "jp": "永久に",
+          "en": "Always"
+	},
+        // ... Add messages for other days in July
+      },
+      // ... Add messages for other months
+    };
+
+    var currentDate = new Date();
+    var currentMonth = (currentDate.getMonth() + 1).toString();
+    var currentDay = currentDate.getDate().toString();
+
+    var currentDateElement = document.getElementById("current-date");
+    var messageElement = document.getElementById("message");
+
+    if (currentMonth in messages && currentDay in messages[currentMonth]) {
+      var message = messages[currentMonth][currentDay];
+      var jpMessage = message.jp;
+      var enMessage = message.en;
+
+      var content = "<br><br>" + jpMessage + "<br><br>" + enMessage;
+      messageElement.innerHTML = content;
+    } else {
+      messageElement.textContent = "Always";
+    }
+
+    currentDateElement.textContent = currentDate.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+  </script>
+</body>
+</html>
+
